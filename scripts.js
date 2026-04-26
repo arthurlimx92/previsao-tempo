@@ -1,4 +1,4 @@
-const API_URL = "https://seu-projeto.onrender.com" // 👈 troque pela URL do Render após o deploy
+const API_URL = "https://previsao-tempo-ssj1.onrender.com" // 👈 troque pela URL do Render após o deploy
 
 async function cliquenobotao() {
     let cidade = document.querySelector(".imput-cidade").value.trim()
