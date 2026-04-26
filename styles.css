@@ -1,0 +1,284 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --glass: rgba(10, 10, 18, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-hover: rgba(255, 255, 255, 0.05);
+    --accent: #60a5fa;
+    --accent-warm: #fb923c;
+    --text: #f0f0f0;
+    --text-muted: rgba(240, 240, 240, 0.5);
+    --radius: 24px;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    background-image: url("https://loremflickr.com/1920/1080/nature,landscape");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.45) 100%
+    );
+    backdrop-filter: blur(2px);
+    z-index: 0;
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    width: min(460px, 92vw);
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    backdrop-filter: blur(28px) saturate(1.4);
+    -webkit-backdrop-filter: blur(28px) saturate(1.4);
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04) inset,
+        0 32px 64px rgba(0,0,0,0.45),
+        0 8px 16px rgba(0,0,0,0.3);
+    animation: fadeUp 0.5s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Search Row ── */
+.search-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.imput-cidade {
+    flex: 1;
+    border: 1px solid var(--glass-border);
+    outline: none;
+    border-radius: 14px;
+    padding: 11px 16px;
+    background: var(--glass-hover);
+    color: var(--text);
+    font-family: 'Nunito', sans-serif
+    font-size: 15px;
+    font-weight: 400;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.imput-cidade::placeholder {
+    color: var(--text-muted);
+}
+
+.imput-cidade:focus {
+    border-color: rgba(96, 165, 250, 0.4);
+    background: rgba(255,255,255,0.07);
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    background: var(--glass-hover);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.15s, border-color 0.2s;
+}
+
+.icon-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.18);
+    transform: scale(1.08);
+}
+
+.icon-btn:active {
+    transform: scale(0.96);
+}
+
+/* ── Weather Content ── */
+.caixa-media {
+    margin-top: 28px;
+}
+
+.weather-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.cidade {
+    font-family: 'Nunito', sans-serif
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    line-height: 1.1;
+}
+
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 0 12px rgba(255,220,100,0.35));
+}
+
+.temp-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.temp {
+    font-family: 'Nunito', sans-serif
+    font-size: 56px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.temp-unit {
+    font-size: 22px;
+    color: var(--text-muted);
+    font-weight: 300;
+}
+
+.info-pills {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--glass-border);
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.pill svg {
+    opacity: 0.6;
+}
+
+/* ── IA Button ── */
+.botao-ia {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: none;
+    border-radius: 14px;
+    font-family: 'Nunito', sans-serif
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: #fff;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+}
+
+.botao-ia:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+.botao-ia:active {
+    transform: translateY(0);
+}
+
+.botao-ia:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── IA Response ── */
+.resposta-ia-wrapper {
+    margin-top: 16px;
+    border-top: 1px solid var(--glass-border);
+    padding-top: 16px;
+    animation: fadeUp 0.4s cubic-bezier(.22,1,.36,1) both;
+}
+
+.ia-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ia-label::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.resposta-ia {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.65;
+    font-weight: 300;
+}
+
+/* ── Loading dots ── */
+.loading-dots span {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    margin: 0 2px;
+    animation: bounce 1.2s infinite;
+}
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40% { transform: translateY(-5px); opacity: 1; }
+}
